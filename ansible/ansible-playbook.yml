@@ -1,0 +1,13 @@
+- name: Deploy Web Page
+  hosts: All
+  become: Yes
+  tasks:
+    - name: copy html file
+      copy: 
+        src: index.html
+        dest: /var/www/html/index.html
+    - name: Restart apache
+      Service:
+        name: apache2
+        state: restarted
+        
